@@ -19,7 +19,7 @@ class Lecturer extends Model
 
     public function post()
     {
-        return $this->belongTo(Post::class);
+        return $this->belongsTo(Post::class);
     }
 
     public function faculty()
