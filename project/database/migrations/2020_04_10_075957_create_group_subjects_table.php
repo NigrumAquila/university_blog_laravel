@@ -11,7 +11,7 @@ class CreateGroupSubjectsTable extends Migration
         Schema::create('group_subjects', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('group_id')->nullable();
-            $table->unsignedInteger('subject_id')->nullable();
+            $table->unsignedInteger('subject_id')->nullable()->index();
             $table->unsignedInteger('lecturer_id')->nullable();
             $table->enum('exam_test', ['экзамен', 'зачет']);
         });

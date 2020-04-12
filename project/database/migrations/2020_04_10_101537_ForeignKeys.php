@@ -10,7 +10,7 @@ class ForeignKeys extends Migration
     {
         Schema::table('exam_marks', function($table)
         {
-            $table->foreign('subject_id')->references('id')->on('subjects')->onDelete('SET NULL')->onUpdate('CASCADE');
+            $table->foreign('subject_id')->references('subject_id')->on('group_subjects')->onDelete('SET NULL')->onUpdate('CASCADE');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('SET NULL')->onUpdate('CASCADE');
             $table->foreign('mark_id')->references('id')->on('marks')->onDelete('SET NULL')->onUpdate('CASCADE');
         });
