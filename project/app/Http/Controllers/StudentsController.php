@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Student;
 use App\Models\Services\StudentsService;
+use App\Models\Student;
 
 class StudentsController extends Controller
 {

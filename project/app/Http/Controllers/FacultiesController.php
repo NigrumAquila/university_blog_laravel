@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Faculty;
 use App\Models\Services\FacultiesService;
+use App\Models\Faculty;
 
 class FacultiesController extends Controller
 {

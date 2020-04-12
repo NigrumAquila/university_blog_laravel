@@ -12,6 +12,11 @@ class Faculty extends Model
         'name', 'abbreviation',
     ];
 
+    public function lecturers()
+    {
+        return $this->hasMany(Lecturer::class);
+    }
+
     public static function add($fields)
     {
         $faculty = new static;

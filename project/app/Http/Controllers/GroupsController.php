@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Group;
 use App\Models\Services\GroupsService;
+use App\Models\Group;
 
 class GroupsController extends Controller
 {

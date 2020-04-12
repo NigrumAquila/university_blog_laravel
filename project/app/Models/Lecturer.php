@@ -12,6 +12,21 @@ class Lecturer extends Model
         'surname', 'name', 'patronymic', 'post_id', 'faculty_id',
     ];
 
+    public function groupSubjects()
+    {
+        return $this->hasMany(GroupSubject::class);
+    }
+
+    public function post()
+    {
+        return $this->belongTo(Post::class);
+    }
+
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class);
+    }
+
     public static function add($fields)
     {
         $lecturer = new static;
@@ -26,5 +41,4 @@ class Lecturer extends Model
         $this->fill($fields); 
         $this->save();
     }
-    
 }

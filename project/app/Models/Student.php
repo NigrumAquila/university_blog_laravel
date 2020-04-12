@@ -15,6 +15,16 @@ class Student extends Model
         'group_id', 'number', 'surname', 'name', 'patronymic', 'gender', 'birthday',
     ];
 
+    public function examMarks()
+    {
+        return $this->hasMany(ExamMark::class);
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
+
     public static function add($fields)
     {
         $student = new static;
