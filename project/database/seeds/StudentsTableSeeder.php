@@ -85,7 +85,7 @@ class StudentsTableSeeder extends Seeder
                 'number' => '101110012',
                 'surname' => 'Тропинин',
                 'name' => 'Эдуард',
-                'patronymic' => 'Алелксандрович',
+                'patronymic' => 'Александрович',
                 'gender' => 'м',
                 'birthday' => '1992-11-25'
             ],
