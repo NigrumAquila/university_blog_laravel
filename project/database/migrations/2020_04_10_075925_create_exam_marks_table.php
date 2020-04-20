@@ -10,7 +10,7 @@ class CreateExamMarksTable extends Migration
     {
         Schema::create('exam_marks', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('subject_id')->nullable();
+            $table->unsignedInteger('group_subjects_id')->nullable();
             $table->unsignedInteger('student_id')->nullable();
             $table->unsignedInteger('mark_id')->nullable();
             $table->date('date');

@@ -6,5 +6,5 @@
     <a href="{{ route('logout.post') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти</a>
 </p>
 <form action="{{ route('logout.post') }}" method="POST" id="logout-form" style="display: none;">{{ csrf_field() }}</form>
-<p><a href="{{ route('login') }}">На главную страницу</a></p>
+<p><a href="{{ route('index') }}">На главную страницу</a></p>
 @endsection

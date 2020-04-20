@@ -10,7 +10,7 @@ class ForeignKeys extends Migration
     {
         Schema::table('exam_marks', function($table)
         {
-            $table->foreign('subject_id')->references('subject_id')->on('group_subjects')->onDelete('SET NULL')->onUpdate('CASCADE');
+            $table->foreign('group_subjects_id')->references('id')->on('group_subjects')->onDelete('SET NULL')->onUpdate('CASCADE');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('SET NULL')->onUpdate('CASCADE');
             $table->foreign('mark_id')->references('id')->on('marks')->onDelete('SET NULL')->onUpdate('CASCADE');
         });
@@ -38,7 +38,7 @@ class ForeignKeys extends Migration
     {
         Schema::table('exam_marks', function($table)
         {
-            $table->dropForeign('exam_marks_subject_id_foreign');
+            $table->dropForeign('exam_marks_group_subjects_id_foreign');
             $table->dropForeign('exam_marks_student_id_foreign');
             $table->dropForeign('exam_marks_mark_id_foreign');
         });

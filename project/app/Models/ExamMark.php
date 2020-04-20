@@ -14,7 +14,7 @@ class ExamMark extends Model
 
     public function groupSubject()
     {
-        return $this->belongsTo(GroupSubject::class, 'subject_id', 'subject_id');
+        return $this->belongsTo(GroupSubject::class);
     }
 
     public function student()

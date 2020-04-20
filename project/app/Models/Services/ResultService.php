@@ -19,7 +19,7 @@ class ResultService
             ->orderBy('groups.name', 'ASC', 'group_subjects.exam_test', 'ASC')
             ->get(),
             
-            'students' => GroupSubject::join('exam_marks', 'group_subjects.id', '=', 'exam_marks.subject_id')
+            'students' => GroupSubject::join('exam_marks', 'group_subjects.id', '=', 'exam_marks.group_subjects_id')
             ->join('groups', 'groups.id', '=', 'group_subjects.group_id')
             ->join('students', 'students.id', '=', 'exam_marks.student_id')
             ->join('marks', 'marks.id', '=', 'exam_marks.mark_id')

@@ -43,7 +43,7 @@ class GroupSubjectsService
             'students' => ExamMark::join('students', 'students.id', '=', 'exam_marks.student_id')
                 ->join('marks', 'marks.id', '=', 'exam_marks.mark_id')
                 ->select('exam_marks.id', 'exam_marks.date', 'students.number', 'students.surname', 'students.name', 'students.patronymic', 'marks.name as mark_name')
-                ->where('exam_marks.subject_id', '=', $id)
+                ->where('exam_marks.group_subjects_id', '=', $id)
                 ->orderBy('students.surname', 'students.name', 'students.patronymic', 'ASC')
                 ->get(),
         );
@@ -64,7 +64,7 @@ class GroupSubjectsService
             'students' => ExamMark::join('students', 'students.id', '=', 'exam_marks.student_id')
                 ->join('marks', 'marks.id', '=', 'exam_marks.mark_id')
                 ->select('exam_marks.id', 'exam_marks.date', 'students.number', 'students.surname', 'students.name', 'students.patronymic', 'marks.name as mark_name')
-                ->where('exam_marks.subject_id', '=', $id)
+                ->where('exam_marks.group_subjects_id', '=', $id)
                 ->orderBy('students.surname', 'students.name', 'students.patronymic', 'ASC')
                 ->get(),
         );

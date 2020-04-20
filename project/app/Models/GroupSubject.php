@@ -25,6 +25,6 @@ class GroupSubject extends Model
 
     public function examMarks()
     {
-        return $this->hasMany(ExamMark::class, 'subject_id', 'subject_id');
+        return $this->hasMany(ExamMark::class);
     }
 }
