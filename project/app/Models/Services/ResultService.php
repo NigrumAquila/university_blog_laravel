@@ -7,7 +7,7 @@ use App\Models\GroupSubject;
 
 class ResultService
 {
-    public function resultData()
+    public static function resultData()
     {
         $data = array(
             'groups' => Group::join('group_subjects', 'groups.id', '=', 'group_subjects.group_id')
@@ -23,15 +23,15 @@ class ResultService
             ->join('groups', 'groups.id', '=', 'group_subjects.group_id')
             ->join('students', 'students.id', '=', 'exam_marks.student_id')
             ->join('marks', 'marks.id', '=', 'exam_marks.mark_id')
-            ->select('groups.name as group_name',
+            ->select('groups.id as group_id', 'groups.name as group_name',
             DB::raw('CONCAT(students.surname, \' \', left(students.name, 1), \'.\', left(students.patronymic, 1), \'.\') AS student'),
             'students.number','group_subjects.exam_test', DB::raw('count(exam_marks.mark_id) AS count_mark, 
             min(marks.value) AS min_mark, sum(marks.value) AS sum_mark'))
-            ->groupBy('group_subjects.group_id', 'exam_marks.student_id', 'groups.name', 
+            ->groupBy('group_subjects.group_id', 'exam_marks.student_id', 'groups.id', 'groups.name', 
             'students.surname', 'students.name', 'students.patronymic', 'students.number', 'group_subjects.exam_test')
             ->get(),
         );
-        
+
         for($i = 0; $i < count($data['students']); $i++) 
         {
             $data['students'][$i]->total = (($data['students'][$i]->exam_test == 'экзамен' AND $data['students'][$i]->min_mark > 2) 
@@ -41,16 +41,20 @@ class ResultService
 
         for($i = 0; $i < count($data['students']); $i++)
         {
+            $group_iterator = ($data['students'][$i]->exam_test == 'экзамен') 
+                ? $data['students'][$i]->group_id * 2 - 2 
+                : $data['students'][$i]->group_id * 2 - 1;
+
             if(!empty($data['students'][$i+1]) AND $data['students'][$i]->student == $data['students'][$i+1]->student) 
             {
                 if($data['students'][$i]->total == 'да' AND $data['students'][$i+1]->total == 'да') 
                 {
-                    if($data['students'][$i]->sum_mark + $data['students'][$i+1]->sum_mark == $data['groups'][$i]->Max_Ball + $data['groups'][$i+1]->Max_Ball) 
+                    if($data['students'][$i]->sum_mark + $data['students'][$i+1]->sum_mark == $data['groups'][$group_iterator]->Max_Ball + $data['groups'][$group_iterator+1]->Max_Ball) 
                     {
                         $data['students'][$i]->grant = '200';
                         $data['students'][$i+1]->grant = '200';
                     }
-                    elseif($data['students'][$i]->sum_mark + $data['students'][$i+1]->sum_mark == $data['groups'][$i]->Max_Ball + $data['groups'][$i+1]->Max_Ball - 1) 
+                    elseif($data['students'][$i]->sum_mark + $data['students'][$i+1]->sum_mark == $data['groups'][$group_iterator]->Max_Ball + $data['groups'][$group_iterator+1]->Max_Ball - 1) 
                     {
                         $data['students'][$i]->grant = '150';
                         $data['students'][$i+1]->grant = '150';
