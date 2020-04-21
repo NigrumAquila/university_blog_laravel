@@ -31,6 +31,8 @@
   </tr>
   @endforeach
 </table>
+@else
+<h3>Оценок пока нет!</h3>
 @endif
 <p><a href="{{ route('group_subjects.index') }}">На программу обучения</a></p>
 <p><a href="{{ route('index') }}">На главную страницу</a></p>

@@ -30,6 +30,7 @@
 </form
 <p>&nbsp;</p>
 <hr>
+@if(count($lecturers) > 0)
 <table width="100%"  border="1" cellspacing="2" cellpadding="1" class="center">
   <tr>
     <th width="11%" scope="col">Номер</th>
@@ -59,6 +60,9 @@
   </tr>
 @endforeach
 </table>
+@else
+<h3>Преподавателей на данной кафедре пока нет!</h3>
+@endif
 <p><a href="{{ route('faculties.index') }}">На список кафедр</a></p>
 <p><a href="{{ route('index') }}">На главную страницу</a></p>
 @endsection

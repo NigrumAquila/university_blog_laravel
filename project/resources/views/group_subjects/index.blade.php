@@ -25,7 +25,7 @@
 <form action="{{ route('group_subjects.index') }}" method="get" enctype="text/plain">
   <input name="group" type="hidden" value="">
   <input name="subject" type="hidden" value="">
-  <input name="name" type="hidden" value="">
+  <input name="surname" type="hidden" value="">
   <input name="name" type="hidden" value="">
   <input name="patronymic" type="hidden" value="">
   <input name="exam_test" type="hidden" value="">
@@ -63,7 +63,7 @@
   @endforeach
 </table>
 @else
-<h3>Преподавателей на данной кафедре пока нет!</h3>
+<h3>Списка предметов пока нет!</h3>
 @endif
 <p><a href="{{ route('results') }}">На результаты сессии</a></p>
 <p><a href="{{ route('index') }}">На главную страницу</a></p>
